@@ -5,7 +5,7 @@
 	"repository": "shinnn/executing-npm-path",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
 	"scripts": {
-		"pretest": "eslint --format=codeframe .",
+		"pretest": "eslint --fix --format=codeframe .",
 		"test": "nyc --reporter=html --reporter=text node test.js",
 		"test-yarn": "node tmp.js"
 	},
@@ -33,9 +33,6 @@
 		"yarn": "^1.7.0"
 	},
 	"eslintConfig": {
-		"extends": "@shinnn/node",
-		"rules": {
-			"no-var": "off"
-		}
+		"extends": "@shinnn/node"
 	}
 }
