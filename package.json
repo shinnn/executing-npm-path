@@ -1,6 +1,6 @@
 {
 	"name": "executing-npm-path",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "A path of the currently executed npm CLI",
 	"repository": "shinnn/executing-npm-path",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
