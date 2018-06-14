@@ -1,10 +1,10 @@
 'use strict';
 
-const join = require('path').join;
+const {join} = require('path');
 
 const path = process.env.npm_execpath;
 
-if (typeof path === 'string' && path.indexOf(join('node_modules', 'npm')) !== -1) {
+if (typeof path === 'string' && path.includes(join('node_modules', 'npm'))) {
 	module.exports = path;
 } else {
 	module.exports = null;
