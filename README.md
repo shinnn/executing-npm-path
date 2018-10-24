@@ -2,7 +2,6 @@
 
 [![npm version](https://img.shields.io/npm/v/executing-npm-path.svg)](https://www.npmjs.com/package/executing-npm-path)
 [![Build Status](https://travis-ci.com/shinnn/executing-npm-path.svg?branch=master)](https://travis-ci.com/shinnn/executing-npm-path)
-[![Build status](https://ci.appveyor.com/api/projects/status/mx900j0cj5qfv62a/branch/master?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/executing-npm-path/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/executing-npm-path.svg)](https://coveralls.io/github/shinnn/executing-npm-path?branch=master)
 
 A path of the currently executed [npm CLI](https://github.com/npm/npm)
