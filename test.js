@@ -1,11 +1,18 @@
 'use strict';
 
+const {execFile} = require('child_process');
 const {join} = require('path');
+const {promisify} = require('util');
 const {unlink, writeFile} = require('fs').promises;
 
 const executingNpmPath = require('.');
-const getStdout = require('execa').stdout;
 const test = require('tape');
+
+const execFileOptions = {
+	shell: process.platform === 'win32',
+	timeout: 5000
+};
+const promisifiedExecFile = promisify(execFile);
 
 test('test', async t => {
 	t.equal(
@@ -17,16 +24,17 @@ test('test', async t => {
 	const tmp = join(__dirname, 'tmp.js');
 
 	await writeFile(tmp, 'console.log(require("."))');
+	delete process.env.npm_execpath;
 
 	await Promise.all([
 		(async () => t.equal(
-			await getStdout('node', [tmp], {extendEnv: false}),
-			'null',
+			(await promisifiedExecFile('node', [tmp], execFileOptions)).stdout,
+			'null\n',
 			'should return null when the program isn\'t running inside a package manager.'
 		))(),
 		(async () => t.equal(
-			await getStdout('yarn', ['--silent', 'test-yarn'], {extendEnv: false}),
-			'null',
+			(await promisifiedExecFile('yarn', ['--silent', 'test-yarn'], execFileOptions)).stdout,
+			'null\n',
 			'should return null when the program is running inside a non-npm package manager.'
 		))()
 	]);
